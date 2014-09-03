@@ -52,13 +52,13 @@ while(<R>){
                                         $sdesc=~s/\n//;
                                         #print "$sdesc=>";
                                         $sdesc=encode_base64($sdesc);
-                                                                                $sdesc=~s/\n//;
+                                        $sdesc=~s/\n//;
+                                        
                                         #print "$sdesc/";
 
                                         $comment_data=$comments{$key1}{$key2}{'comment_data'};
                                         $date=convert_time($comments{$key1}{$key2}{'entry_time'});
                                         $auth=$comments{$key1}{$key2}{'author'};
-
                                         $service_comment{$host_name}{"$sdesc"}="$comment_data - <font color=#456789> by </font> $author <font color=#456789> on </font> $date";
 
                         }else{
@@ -67,9 +67,7 @@ while(<R>){
                                         $comment_data=$comments{$key1}{$key2}{'comment_data'};
                                         $commentdate=convert_time($comments{$key1}{$key2}{'entry_time'});
                                         $author=$comments{$key1}{$key2}{'author'};
-
-
-                                $host_comment{$host_name}="$comment_data - <font color=#456789>by </font> $author <font color=#456789>on</font> $commentdate";
+                                        $host_comment{$host_name}="$comment_data - <font color=#456789>by </font> $author <font color=#456789>on</font> $commentdate";
 
 
 
@@ -80,16 +78,17 @@ while(<R>){
         }
 
 #print Dumper %service_comment;
+
 sub convert_time {
 
         my $date_str ='';
 
         my $timestamp =shift;
 
-my    ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($timestamp);
+        my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($timestamp);
         $mon++;
         $year+=1900;
-$date_str="$mday/$mon/$year $hour:$min:$sec";
+        $date_str="$mday/$mon/$year $hour:$min:$sec";
 
         return $date_str;
 
