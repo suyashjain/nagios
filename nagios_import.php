@@ -3,6 +3,7 @@
 function config_file_list($nagios_config_file){
 
 print "Reading Main Config File:".$nagios_config_file."\n";
+
 $all_config_file=array();
 
         if($nagios_config_file == ""){
